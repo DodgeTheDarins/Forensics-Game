@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckv510xmonllx"]
+[gd_scene load_steps=21 format=3 uid="uid://ckv510xmonllx"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
 [ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
 [ext_resource type="Script" uid="uid://bnx54xj1cxt22" path="res://levels/door_1.gd" id="2_i2rie"]
 [ext_resource type="Script" uid="uid://bi6e6svqnh8m7" path="res://player/player.gd" id="3_jm2ov"]
+[ext_resource type="PackedScene" uid="uid://c5uv6boav5a3u" path="res://objects/Evidence.tscn" id="5_jm2ov"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xpw07"]
 
@@ -158,6 +159,10 @@ texture = SubResource("PlaceholderTexture2D_jm2ov")
 [node name="floor2c" type="CollisionShape2D" parent="mappieces/floor2"]
 position = Vector2(92.17473, -9.669591)
 shape = SubResource("RectangleShape2D_2m0k3")
+
+[node name="Evidence" parent="." instance=ExtResource("5_jm2ov")]
+position = Vector2(-292, -94.00001)
+scale = Vector2(0.47727272, 0.57281554)
 
 [connection signal="body_entered" from="mappieces/door1" to="Player" method="_on_door_1_body_entered"]
 [connection signal="body_exited" from="mappieces/door1" to="Player" method="_on_door_1_body_exited"]
