@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckv510xmonllx"]
+[gd_scene load_steps=20 format=3 uid="uid://ckv510xmonllx"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
 [ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
@@ -25,6 +25,8 @@ size = Vector2(36.38244, 72.030304)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pltr5"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lcarr"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qsg3g"]
 size = Vector2(1121.826, 31.665524)
 
@@ -36,11 +38,16 @@ height = 87.315956
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g3hlq"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jm2ov"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2m0k3"]
+size = Vector2(221.11957, 25.479864)
+
 [node name="game" type="Node2D"]
 script = ExtResource("1_lcarr")
 
 [node name="Player" parent="." instance=ExtResource("1_1yedr")]
-position = Vector2(168, 16)
+position = Vector2(52.33606, -82.094666)
 script = ExtResource("3_jm2ov")
 
 [node name="mappieces" type="Node" parent="."]
@@ -92,6 +99,12 @@ position = Vector2(-36.554676, -188.49266)
 scale = Vector2(36.394157, 72.08964)
 texture = SubResource("PlaceholderTexture2D_pltr5")
 
+[node name="wallbackground1" type="Sprite2D" parent="mappieces"]
+z_index = -10
+position = Vector2(-574.8354, -123.35397)
+scale = Vector2(1057.7626, 202.25674)
+texture = SubResource("PlaceholderTexture2D_lcarr")
+
 [node name="ceiling1" type="StaticBody2D" parent="mappieces"]
 position = Vector2(-1138.3939, -25.67804)
 
@@ -118,6 +131,33 @@ shape = SubResource("CapsuleShape2D_vrv86")
 position = Vector2(-36.488552, -87.43559)
 scale = Vector2(-19.037712, -130.0293)
 texture = SubResource("PlaceholderTexture2D_g3hlq")
+
+[node name="door2" type="Area2D" parent="mappieces"]
+position = Vector2(-683, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_i2rie")
+
+[node name="door2c" type="CollisionShape2D" parent="mappieces/door2"]
+position = Vector2(-36.434204, -94.93422)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_vrv86")
+
+[node name="door2s" type="Sprite2D" parent="mappieces/door2"]
+position = Vector2(-36.488552, -87.43559)
+scale = Vector2(-19.037712, -130.0293)
+texture = SubResource("PlaceholderTexture2D_g3hlq")
+
+[node name="floor2" type="StaticBody2D" parent="mappieces"]
+
+[node name="floor2s" type="Sprite2D" parent="mappieces/floor2"]
+position = Vector2(92.17106, -9.665316)
+scale = Vector2(221.10806, 25.49944)
+texture = SubResource("PlaceholderTexture2D_jm2ov")
+
+[node name="floor2c" type="CollisionShape2D" parent="mappieces/floor2"]
+position = Vector2(92.17473, -9.669591)
+shape = SubResource("RectangleShape2D_2m0k3")
 
 [connection signal="body_entered" from="mappieces/door1" to="Player" method="_on_door_1_body_entered"]
 [connection signal="body_exited" from="mappieces/door1" to="Player" method="_on_door_1_body_exited"]
