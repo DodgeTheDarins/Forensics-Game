@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://ckv510xmonllx"]
+[gd_scene load_steps=22 format=3 uid="uid://ydby8fpfq4jo"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
 [ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
 [ext_resource type="Script" uid="uid://bnx54xj1cxt22" path="res://levels/door_1.gd" id="2_i2rie"]
 [ext_resource type="Script" uid="uid://bi6e6svqnh8m7" path="res://player/player.gd" id="3_jm2ov"]
+[ext_resource type="Texture2D" uid="uid://bfetv1leciw1q" path="res://levels/Firefly_Gemini Flash_a side view of the seating portion of a restaurant, made for a sidescroller 2d game w 623437.png" id="4_wesik"]
+[ext_resource type="Texture2D" uid="uid://drmh60md1viga" path="res://levels/Firefly_Gemini Flash_can you generate an image of the cooking area of a restaurant from a side perspective 623437.png" id="5_3e552"]
 [ext_resource type="PackedScene" uid="uid://c5uv6boav5a3u" path="res://objects/Evidence.tscn" id="5_jm2ov"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xpw07"]
@@ -25,8 +27,6 @@ size = Vector2(36.406258, 72.08594)
 size = Vector2(36.38244, 72.030304)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pltr5"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lcarr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qsg3g"]
 size = Vector2(1121.826, 31.665524)
@@ -102,9 +102,18 @@ texture = SubResource("PlaceholderTexture2D_pltr5")
 
 [node name="wallbackground1" type="Sprite2D" parent="mappieces"]
 z_index = -10
-position = Vector2(-574.8354, -123.35397)
-scale = Vector2(1057.7626, 202.25674)
-texture = SubResource("PlaceholderTexture2D_lcarr")
+texture_repeat = 3
+position = Vector2(-378.0313, -118.171005)
+scale = Vector2(0.28846183, 0.3)
+texture = ExtResource("4_wesik")
+region_enabled = true
+region_rect = Rect2(0, 0, 2362.918, 864)
+
+[node name="wallbackground2" type="Sprite2D" parent="mappieces"]
+z_index = -1
+position = Vector2(-912.98773, -132.89052)
+scale = Vector2(0.32, 0.29)
+texture = ExtResource("5_3e552")
 
 [node name="ceiling1" type="StaticBody2D" parent="mappieces"]
 position = Vector2(-1138.3939, -25.67804)
