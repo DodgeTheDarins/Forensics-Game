@@ -40,9 +40,13 @@ script/source = "extends Camera2D
 
 @onready var player := get_tree().get_nodes_in_group(\"player\")[0]
 
+
+func _ready() -> void:
+	zoom = Vector2(0.5, 0.5)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global_position = lerp(global_position, player.global_position, delta * 3)
+	global_position = lerp(global_position, player.global_position + Vector2(0.0, -90.0), delta * 3)
+	zoom = lerp(zoom, Vector2(1.7, 1.7), delta)
 "
 
 [node name="game" type="Node2D"]
@@ -210,6 +214,24 @@ scale = Vector2(0.5, 0.5)
 
 [node name="knife" parent="." instance=ExtResource("10_qsg3g")]
 position = Vector2(-955, -100)
+
+[node name="93945Ba817c64e8bBecdEa19e77a95a7" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture_repeat = 2
+position = Vector2(-579.06213, -140.33394)
+scale = Vector2(0.549926, 0.47516766)
+texture = ExtResource("5_17h0l")
+region_enabled = true
+region_rect = Rect2(0, 536, 2040, 488)
+
+[node name="4633b9Ce11Ed44EaBd74D47Bfe199Bea" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(-575.97736, -313.3274)
+scale = Vector2(0.27, 0.2)
+texture = ExtResource("4_3e552")
+region_enabled = true
+region_rect = Rect2(0, 456, 4272, 568)
 
 [connection signal="body_entered" from="mappieces/door1" to="Player" method="_on_door_1_body_entered"]
 [connection signal="body_exited" from="mappieces/door1" to="Player" method="_on_door_1_body_exited"]
