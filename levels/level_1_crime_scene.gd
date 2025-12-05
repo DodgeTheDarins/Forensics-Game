@@ -10,5 +10,5 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_evidence_collected(item_name: Variant) -> void:
+func _on_knife_collected(item_name: Variant) -> void:
 	pass # Replace with function body.

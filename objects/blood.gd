@@ -12,7 +12,7 @@ func _on_area_2d_body_entered(body: Node2D):
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("pickup") and in_evidence:
 		emit_signal("collected", item_name)
-		queue_free() # removes the item
+		print("blood")
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
