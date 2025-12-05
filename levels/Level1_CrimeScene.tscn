@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://bnx54xj1cxt22" path="res://levels/door_1.gd" id="2_i2rie"]
 [ext_resource type="Script" uid="uid://bi6e6svqnh8m7" path="res://player/player.gd" id="3_jm2ov"]
 [ext_resource type="Texture2D" uid="uid://d0cnngk5yv6ad" path="res://levels/_4633b9ce-11ed-44ea-bd74-d47bfe199bea.jpg" id="4_3e552"]
-[ext_resource type="Texture2D" uid="uid://bfetv1leciw1q" path="res://levels/Firefly_Gemini Flash_a side view of the seating portion of a restaurant, made for a sidescroller 2d game w 623437.png" id="4_wesik"]
 [ext_resource type="Texture2D" uid="uid://ddkyrya5ut3kr" path="res://levels/_93945ba8-17c6-4e8b-becd-ea19e77a95a7.jpg" id="5_17h0l"]
 [ext_resource type="PackedScene" uid="uid://c5uv6boav5a3u" path="res://objects/Evidence.tscn" id="5_jm2ov"]
 
@@ -34,6 +33,20 @@ height = 87.315956
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m0k3"]
 size = Vector2(221.11957, 25.479864)
+
+[sub_resource type="GDScript" id="GDScript_wesik"]
+script/source = "extends Camera2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_lcarr")
@@ -101,11 +114,12 @@ region_enabled = true
 region_rect = Rect2(0, 632, 208, 392)
 
 [node name="wallbackground1" type="Sprite2D" parent="mappieces"]
+self_modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
 z_index = -10
 texture_repeat = 3
 position = Vector2(-378.4021, -135.20547)
 scale = Vector2(0.28846183, 0.3)
-texture = ExtResource("4_wesik")
+texture = ExtResource("4_3e552")
 region_enabled = true
 region_rect = Rect2(0, 0, 2362.918, 752.9)
 
@@ -179,6 +193,9 @@ shape = SubResource("RectangleShape2D_2m0k3")
 [node name="Evidence" parent="." instance=ExtResource("5_jm2ov")]
 position = Vector2(-292, -94.00001)
 scale = Vector2(0.47727272, 0.57281554)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = SubResource("GDScript_wesik")
 
 [connection signal="body_entered" from="mappieces/door1" to="Player" method="_on_door_1_body_entered"]
 [connection signal="body_exited" from="mappieces/door1" to="Player" method="_on_door_1_body_exited"]
