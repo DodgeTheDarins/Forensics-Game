@@ -1,15 +1,21 @@
-[gd_scene load_steps=20 format=3 uid="uid://ydby8fpfq4jo"]
+[gd_scene load_steps=24 format=3 uid="uid://ydby8fpfq4jo"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
 [ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
 [ext_resource type="Script" uid="uid://bnx54xj1cxt22" path="res://levels/door_1.gd" id="2_i2rie"]
 [ext_resource type="Script" uid="uid://bi6e6svqnh8m7" path="res://player/player.gd" id="3_jm2ov"]
 [ext_resource type="Texture2D" uid="uid://d0cnngk5yv6ad" path="res://levels/_4633b9ce-11ed-44ea-bd74-d47bfe199bea.jpg" id="4_3e552"]
+[ext_resource type="Script" uid="uid://dn54i271sfp5v" path="res://levels/playertrigger.gd" id="4_ow1bj"]
 [ext_resource type="Texture2D" uid="uid://ddkyrya5ut3kr" path="res://levels/_93945ba8-17c6-4e8b-becd-ea19e77a95a7.jpg" id="5_17h0l"]
 [ext_resource type="Texture2D" uid="uid://dsjh0t0bjcou5" path="res://levels/_4e8efc53-ea49-4da5-8106-e8302b436385.jpg" id="7_17h0l"]
 [ext_resource type="Texture2D" uid="uid://cscnxsisswt78" path="res://levels/_969b87a9-25b7-4c50-a1a6-f3e0c5e952a7-removebg-preview.png" id="8_3e552"]
 [ext_resource type="PackedScene" uid="uid://by21eirwjtw2w" path="res://objects/blood.tscn" id="9_pltr5"]
+[ext_resource type="Script" uid="uid://ceieof5o152ko" path="res://levels/buildingoutsidewall.gd" id="9_vrv86"]
 [ext_resource type="PackedScene" uid="uid://48mr70hubn3e" path="res://objects/knife.tscn" id="10_qsg3g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g3hlq"]
+radius = 22.000671
+height = 145.05002
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcarr"]
 size = Vector2(1121.75, 25.5)
@@ -35,6 +41,9 @@ height = 87.315956
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m0k3"]
 size = Vector2(221.11957, 25.479864)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgesj"]
+size = Vector2(1000.12683, 215.01323)
+
 [sub_resource type="GDScript" id="GDScript_wesik"]
 script/source = "extends Camera2D
 
@@ -56,6 +65,16 @@ script = ExtResource("1_lcarr")
 z_index = 2
 position = Vector2(52.33606, -82.094666)
 script = ExtResource("3_jm2ov")
+
+[node name="playertrigger" type="Area2D" parent="."]
+position = Vector2(85.37668, -145.18405)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("4_ow1bj")
+
+[node name="playertriggerc" type="CollisionShape2D" parent="playertrigger"]
+position = Vector2(0.21468353, -0.15789795)
+shape = SubResource("CapsuleShape2D_g3hlq")
 
 [node name="mappieces" type="Node" parent="."]
 
@@ -198,6 +217,33 @@ texture = SubResource("PlaceholderTexture2D_jm2ov")
 position = Vector2(92.17473, -9.669591)
 shape = SubResource("RectangleShape2D_2m0k3")
 
+[node name="roof" type="Sprite2D" parent="mappieces"]
+texture_repeat = 2
+position = Vector2(-575.97736, -313.3274)
+scale = Vector2(0.27, 0.2)
+texture = ExtResource("4_3e552")
+region_enabled = true
+region_rect = Rect2(0, 456, 4272, 568)
+
+[node name="buildingoutsidewall" type="Area2D" parent="mappieces"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("9_vrv86")
+
+[node name="buildingoutsidewalls" type="Sprite2D" parent="mappieces/buildingoutsidewall"]
+visible = false
+z_index = 1
+texture_repeat = 2
+position = Vector2(-579.06213, -140.33394)
+scale = Vector2(0.549926, 0.47516766)
+texture = ExtResource("5_17h0l")
+region_enabled = true
+region_rect = Rect2(0, 536, 2040, 488)
+
+[node name="buildingoutsidewallcollision" type="CollisionShape2D" parent="mappieces/buildingoutsidewall"]
+position = Vector2(-525.6556, -116.832756)
+shape = SubResource("RectangleShape2D_lgesj")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 script = SubResource("GDScript_wesik")
 
@@ -213,26 +259,8 @@ position = Vector2(-483, -98)
 scale = Vector2(0.5, 0.5)
 
 [node name="knife" parent="." instance=ExtResource("10_qsg3g")]
-position = Vector2(-955, -100)
+position = Vector2(-894, -37)
 
-[node name="93945Ba817c64e8bBecdEa19e77a95a7" type="Sprite2D" parent="."]
-visible = false
-z_index = 1
-texture_repeat = 2
-position = Vector2(-579.06213, -140.33394)
-scale = Vector2(0.549926, 0.47516766)
-texture = ExtResource("5_17h0l")
-region_enabled = true
-region_rect = Rect2(0, 536, 2040, 488)
-
-[node name="4633b9Ce11Ed44EaBd74D47Bfe199Bea" type="Sprite2D" parent="."]
-texture_repeat = 2
-position = Vector2(-575.97736, -313.3274)
-scale = Vector2(0.27, 0.2)
-texture = ExtResource("4_3e552")
-region_enabled = true
-region_rect = Rect2(0, 456, 4272, 568)
-
-[connection signal="body_entered" from="mappieces/door1" to="Player" method="_on_door_1_body_entered"]
-[connection signal="body_exited" from="mappieces/door1" to="Player" method="_on_door_1_body_exited"]
+[connection signal="body_entered" from="mappieces/door1" to="playertrigger" method="_on_door_1_body_entered"]
+[connection signal="body_exited" from="mappieces/door1" to="playertrigger" method="_on_door_1_body_exited"]
 [connection signal="collected" from="knife" to="." method="_on_knife_collected"]

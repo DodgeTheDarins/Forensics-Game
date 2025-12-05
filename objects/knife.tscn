@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://csat55gei317t" path="res://levels/knife-removebg-preview (1).png" id="2_f3qjk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2b5e"]
+size = Vector2(5.361452, 20)
 
 [node name="knife" type="Node2D"]
 script = ExtResource("1_f3qjk")
@@ -14,6 +15,7 @@ texture = ExtResource("2_f3qjk")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-24.895384, -75.30009)
 scale = Vector2(6.4223123, 6.4900756)
 shape = SubResource("RectangleShape2D_r2b5e")
 
