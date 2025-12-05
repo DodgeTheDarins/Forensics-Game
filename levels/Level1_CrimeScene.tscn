@@ -84,8 +84,8 @@ position = Vector2(17.159912, -97.7608)
 shape = SubResource("RectangleShape2D_jm2ov")
 
 [node name="wall1s" type="Sprite2D" parent="mappieces/wall1"]
-position = Vector2(17.096058, -97.7345)
-scale = Vector2(0.17221725, 0.19737087)
+position = Vector2(17.096058, -84.83127)
+scale = Vector2(0.17221725, 0.22257249)
 texture = ExtResource("5_17h0l")
 region_enabled = true
 region_rect = Rect2(0, 0, 219.6142, 1024)
@@ -133,7 +133,7 @@ z_index = -1
 texture_repeat = 2
 position = Vector2(-910.80756, -123.490906)
 scale = Vector2(0.32554728, 0.1718033)
-texture = ExtResource("5_17h0l")
+texture = ExtResource("4_3e552")
 region_enabled = true
 region_rect = Rect2(0, -152, 1176, 1176)
 
@@ -148,7 +148,7 @@ shape = SubResource("RectangleShape2D_qsg3g")
 texture_repeat = 2
 position = Vector2(559.1407, -214.50418)
 scale = Vector2(0.5435924, 0.26808327)
-texture = ExtResource("4_3e552")
+texture = ExtResource("5_17h0l")
 region_enabled = true
 region_rect = Rect2(0, 864, 2064, 120)
 
