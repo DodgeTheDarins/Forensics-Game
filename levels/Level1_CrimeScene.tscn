@@ -203,3 +203,4 @@ script = SubResource("GDScript_wesik")
 
 [connection signal="body_entered" from="mappieces/door1" to="Player" method="_on_door_1_body_entered"]
 [connection signal="body_exited" from="mappieces/door1" to="Player" method="_on_door_1_body_exited"]
+[connection signal="collected" from="Evidence" to="." method="_on_evidence_collected"]
