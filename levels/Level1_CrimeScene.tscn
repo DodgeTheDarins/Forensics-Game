@@ -1,21 +1,16 @@
-[gd_scene load_steps=24 format=3 uid="uid://ydby8fpfq4jo"]
+[gd_scene load_steps=22 format=3 uid="uid://ydby8fpfq4jo"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
 [ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
 [ext_resource type="Script" uid="uid://bnx54xj1cxt22" path="res://levels/door_1.gd" id="2_i2rie"]
 [ext_resource type="Script" uid="uid://bi6e6svqnh8m7" path="res://player/player.gd" id="3_jm2ov"]
 [ext_resource type="Texture2D" uid="uid://d0cnngk5yv6ad" path="res://levels/_4633b9ce-11ed-44ea-bd74-d47bfe199bea.jpg" id="4_3e552"]
-[ext_resource type="Script" uid="uid://dn54i271sfp5v" path="res://levels/playertrigger.gd" id="4_ow1bj"]
 [ext_resource type="Texture2D" uid="uid://ddkyrya5ut3kr" path="res://levels/_93945ba8-17c6-4e8b-becd-ea19e77a95a7.jpg" id="5_17h0l"]
 [ext_resource type="Texture2D" uid="uid://dsjh0t0bjcou5" path="res://levels/_4e8efc53-ea49-4da5-8106-e8302b436385.jpg" id="7_17h0l"]
 [ext_resource type="Texture2D" uid="uid://cscnxsisswt78" path="res://levels/_969b87a9-25b7-4c50-a1a6-f3e0c5e952a7-removebg-preview.png" id="8_3e552"]
 [ext_resource type="PackedScene" uid="uid://by21eirwjtw2w" path="res://objects/blood.tscn" id="9_pltr5"]
 [ext_resource type="Script" uid="uid://ceieof5o152ko" path="res://levels/buildingoutsidewall.gd" id="9_vrv86"]
 [ext_resource type="PackedScene" uid="uid://48mr70hubn3e" path="res://objects/knife.tscn" id="10_qsg3g"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g3hlq"]
-radius = 22.000671
-height = 145.05002
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcarr"]
 size = Vector2(1121.75, 25.5)
@@ -65,16 +60,6 @@ script = ExtResource("1_lcarr")
 z_index = 2
 position = Vector2(52.33606, -82.094666)
 script = ExtResource("3_jm2ov")
-
-[node name="playertrigger" type="Area2D" parent="."]
-position = Vector2(85.37668, -145.18405)
-collision_layer = 6
-collision_mask = 6
-script = ExtResource("4_ow1bj")
-
-[node name="playertriggerc" type="CollisionShape2D" parent="playertrigger"]
-position = Vector2(0.21468353, -0.15789795)
-shape = SubResource("CapsuleShape2D_g3hlq")
 
 [node name="mappieces" type="Node" parent="."]
 
@@ -170,17 +155,16 @@ region_enabled = true
 region_rect = Rect2(0, 864, 2064, 120)
 
 [node name="door1" type="Area2D" parent="mappieces"]
+position = Vector2(-31, -89)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_i2rie")
 
 [node name="door1c" type="CollisionShape2D" parent="mappieces/door1"]
-position = Vector2(-36.434204, -94.93422)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_vrv86")
 
 [node name="door1s" type="Sprite2D" parent="mappieces/door1"]
-position = Vector2(-36.488552, -87.372375)
 rotation = 1.5707964
 scale = Vector2(0.127, 0.092)
 texture = ExtResource("7_17h0l")
@@ -188,18 +172,16 @@ region_enabled = true
 region_rect = Rect2(0, 384, 1024, 184)
 
 [node name="door2" type="Area2D" parent="mappieces"]
-position = Vector2(-683, 0)
+position = Vector2(-719, -89)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_i2rie")
 
 [node name="door2c" type="CollisionShape2D" parent="mappieces/door2"]
-position = Vector2(-36.434204, -94.93422)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_vrv86")
 
 [node name="door2s" type="Sprite2D" parent="mappieces/door2"]
-position = Vector2(-36.518307, -87.37617)
 rotation = 1.5707964
 scale = Vector2(0.12699525, 0.091648154)
 texture = ExtResource("7_17h0l")
@@ -261,8 +243,7 @@ scale = Vector2(0.5, 0.5)
 [node name="knife" parent="." instance=ExtResource("10_qsg3g")]
 position = Vector2(-894, -37)
 
-[connection signal="body_entered" from="mappieces/door1" to="playertrigger" method="_on_door_1_body_entered"]
-[connection signal="body_exited" from="mappieces/door1" to="playertrigger" method="_on_door_1_body_exited"]
-[connection signal="body_entered" from="mappieces/buildingoutsidewall" to="playertrigger" method="_on_buildingoutsidewall_body_entered"]
-[connection signal="body_exited" from="mappieces/buildingoutsidewall" to="playertrigger" method="_on_buildingoutsidewall_body_exited"]
+[connection signal="area_entered" from="mappieces/door1" to="mappieces/door1" method="_on_area_entered"]
+[connection signal="body_entered" from="mappieces/door1" to="mappieces/door1" method="_on_body_entered"]
+[connection signal="body_exited" from="mappieces/door1" to="mappieces/door1" method="_on_body_exited"]
 [connection signal="collected" from="knife" to="." method="_on_knife_collected"]
