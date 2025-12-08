@@ -42,7 +42,7 @@ height = 87.315956
 size = Vector2(221.11957, 25.479864)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgesj"]
-size = Vector2(1000.12683, 215.01323)
+size = Vector2(1066.9056, 215.01323)
 
 [sub_resource type="GDScript" id="GDScript_wesik"]
 script/source = "extends Camera2D
@@ -241,13 +241,13 @@ region_enabled = true
 region_rect = Rect2(0, 536, 2040, 488)
 
 [node name="buildingoutsidewallcollision" type="CollisionShape2D" parent="mappieces/buildingoutsidewall"]
-position = Vector2(-525.6556, -116.832756)
+position = Vector2(-559.045, -116.832756)
 shape = SubResource("RectangleShape2D_lgesj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = SubResource("GDScript_wesik")
 
-[node name="969b87a925b74c50A1a6F3e0c5e952a7RemovebgPreview" type="Sprite2D" parent="."]
+[node name="kitchenappliances" type="Sprite2D" parent="."]
 self_modulate = Color(0.70796657, 0.7079665, 0.7079665, 1)
 z_index = -1
 position = Vector2(-1008.6802, -88.375)
@@ -263,4 +263,6 @@ position = Vector2(-894, -37)
 
 [connection signal="body_entered" from="mappieces/door1" to="playertrigger" method="_on_door_1_body_entered"]
 [connection signal="body_exited" from="mappieces/door1" to="playertrigger" method="_on_door_1_body_exited"]
+[connection signal="body_entered" from="mappieces/buildingoutsidewall" to="playertrigger" method="_on_buildingoutsidewall_body_entered"]
+[connection signal="body_exited" from="mappieces/buildingoutsidewall" to="playertrigger" method="_on_buildingoutsidewall_body_exited"]
 [connection signal="collected" from="knife" to="." method="_on_knife_collected"]
