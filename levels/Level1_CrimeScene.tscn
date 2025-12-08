@@ -308,19 +308,21 @@ position = Vector2(-483, -98)
 scale = Vector2(0.5, 0.5)
 
 [node name="kniferigid" type="RigidBody2D" parent="."]
-position = Vector2(-900, -40)
+position = Vector2(-876.85657, -94.75397)
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("14_26cpd")
 
 [node name="knifespriterigid" type="Sprite2D" parent="kniferigid"]
+position = Vector2(27.65918, 79.02634)
 texture = ExtResource("15_lgesj")
 
 [node name="knifecollisionrigid" type="CollisionPolygon2D" parent="kniferigid"]
+position = Vector2(27.65918, 79.59082)
 polygon = PackedVector2Array(-35.57312, -17.59172, -24.707825, -17.241226, -23.305847, -49.136154, -12.791016, -49.48665, -11.389038, -120.6369, -34.521606, -134.30617, -36.975098, -124.141846)
 
 [node name="knife" parent="kniferigid" instance=ExtResource("10_qsg3g")]
-position = Vector2(-2.0474243, -0.96640015)
+position = Vector2(28.434143, 79.18887)
 
 [connection signal="area_entered" from="mappieces/door1" to="mappieces/door1" method="_on_area_entered"]
 [connection signal="body_entered" from="mappieces/door1" to="mappieces/door1" method="_on_body_entered"]
