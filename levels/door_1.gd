@@ -18,11 +18,12 @@ func _process(delta: float):
 			sprite2.scale.y = 0.2
 		if player.velocity.x > 0.0:
 			sprite2.scale.y = -0.2
+
+
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		work = true
 		work2 = true
-		print("e")
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -30,3 +31,13 @@ func _on_body_exited(body: Node2D) -> void:
 		work2 = false
 		sprite.scale.y = 0.092
 		sprite2.scale.y = 0.092
+
+
+func _on_door_2_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		work2 = true
+
+func _on_door_2_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		sprite2.scale.y = 0.092
+		work2 = false
