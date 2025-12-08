@@ -1,19 +1,32 @@
 extends Area2D
 
-@onready var player: Node2D = $"../../Player"
-@onready var playertrigger: Area2D = $"../../playertrigger"
+@onready var player := get_tree().get_nodes_in_group("player")[0]
+@onready var sprite: Sprite2D = $door1s
+@onready var sprite2: Sprite2D = $"../door2/door2s"
 
-@onready var playerco := get_tree().get_nodes_in_group("player")[0]
+var work
+var work2
 
+func _process(delta: float):
+	if work:
+		if player.velocity.x < 0.0:
+			sprite.scale.y = 0.2
+		if player.velocity.x > 0.0:
+			sprite.scale.y = -0.2
+	if work2:
+		if player.velocity.x < 0.0:
+			sprite2.scale.y = 0.2
+		if player.velocity.x > 0.0:
+			sprite2.scale.y = -0.2
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		work = true
+		work2 = true
+		print("e")
 
-func _ready() -> void:
-	pass
-
-func _process(delta: float) -> void:
-	if playertrigger.dooropen1 == true:
-		if playerco.velocity.x < 0.0:
-			scale.x = -2.0
-		else:
-			scale.x = 2.0
-	else:
-		scale.x = 1.0
+func _on_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		work = false
+		work2 = false
+		sprite.scale.y = 0.092
+		sprite2.scale.y = 0.092
