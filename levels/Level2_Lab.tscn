@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://levels/go_back.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://objects/gloves.tscn" id="6"]
-[ext_resource type="Texture2D" uid="uid://ci6jv82jo2uxj" path="res://ui/default_table.png" id="7"]
-[ext_resource type="Script" path="res://scripts/work_area_1_knife.gd" id="8"]
+[ext_resource type="Script" uid="uid://btr651eyjm5p5" path="res://scripts/work_area_1_knife.gd" id="8"]
+[ext_resource type="Texture2D" uid="uid://b4vwnt5uqyhsq" path="res://levels/tablewoodplace.png" id="8_fowqb"]
 [ext_resource type="Script" uid="uid://etb8urn42q2k" path="res://levels/canvas_modulate.gd" id="9"]
 [ext_resource type="Script" uid="uid://dpouvqhcjxjgs" path="res://levels/turn_lights_on.gd" id="10"]
 [ext_resource type="Texture2D" uid="uid://cgt32ibbd1cwu" path="res://levels/lightingtexturdoesntgothroughwalls.png" id="11"]
@@ -109,16 +109,16 @@ position = Vector2(-378, -95)
 position = Vector2(130, -58)
 script = ExtResource("8")
 
-[node name="Area2D" type="Area2D" parent="WorkArea1Knife"]
+[node name="table" type="Area2D" parent="WorkArea1Knife"]
 scale = Vector2(9.34514, 5.54593)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorkArea1Knife/Area2D"]
+[node name="tablec" type="CollisionShape2D" parent="WorkArea1Knife/table"]
 scale = Vector2(1, 0.932408)
 shape = SubResource("RectangleShape2D_fowqb")
 
-[node name="Sprite2D" type="Sprite2D" parent="WorkArea1Knife"]
+[node name="tables" type="Sprite2D" parent="WorkArea1Knife"]
 scale = Vector2(0.125055, 0.168196)
-texture = ExtResource("7")
+texture = ExtResource("8_fowqb")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.314316, 0.314316, 0.314316, 1)
@@ -160,6 +160,6 @@ position = Vector2(-672.39746, -51.264465)
 texture = ExtResource("12_fowqb")
 
 [connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]
-[connection signal="body_entered" from="WorkArea1Knife/Area2D" to="WorkArea1Knife" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="WorkArea1Knife/Area2D" to="WorkArea1Knife" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="WorkArea1Knife/table" to="WorkArea1Knife" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="WorkArea1Knife/table" to="WorkArea1Knife" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="turn lights on" to="turn lights on" method="_on_body_entered"]
