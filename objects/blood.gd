@@ -1,19 +1,43 @@
 extends Node2D
 
-signal collected(item_name)
-var in_evidence
-@export var item_name: String = "Evidence"
+signal item_collected(item_name)
 
+@export var item_name := "blood"
+@export var max_collects := 4
+
+var in_evidence := false
+var collected_count := 0   # <-- different name so no conflict!
+var sprite
+
+func _ready():
+	sprite = $Sprite2D   # or whatever your sprite node is
+	_update_fade()
 
 func _on_area_2d_body_entered(body: Node2D):
 	if body.is_in_group("player"):
 		in_evidence = true
-	
-func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("pickup") and in_evidence:
-		emit_signal("collected", item_name)
-		print("blood")
 
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_area_2d_body_exited(body: Node2D):
 	in_evidence = false
+
+func _physics_process(delta):
+	if in_evidence and Input.is_action_just_pressed("pickup"):
+		_collect_once()
+
+func _collect_once():
+	if collected_count >= max_collects:
+		return
+		
+	collected_count += 1
+	emit_signal("item_collected", item_name)
+	print("Collected blood piece:", collected_count)
+
+	_update_fade()
+	inventory.add_item(item_name)
+
+	if collected_count >= max_collects:
+		queue_free()
+
+func _update_fade():
+	var alpha := 1.0 - (float(collected_count) / max_collects)
+	sprite.modulate.a = alpha

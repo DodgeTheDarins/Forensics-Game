@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ydby8fpfq4jo"]
+[gd_scene load_steps=25 format=3 uid="uid://ydby8fpfq4jo"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
 [ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://by21eirwjtw2w" path="res://objects/blood.tscn" id="9_pltr5"]
 [ext_resource type="Script" uid="uid://ceieof5o152ko" path="res://levels/buildingoutsidewall.gd" id="9_vrv86"]
 [ext_resource type="PackedScene" uid="uid://48mr70hubn3e" path="res://objects/knife.tscn" id="10_qsg3g"]
+[ext_resource type="PackedScene" uid="uid://vlvmmc86w5yq" path="res://objects/gloves.tscn" id="13_g3hlq"]
+[ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="13_vrv86"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcarr"]
 size = Vector2(1121.75, 25.5)
@@ -258,6 +260,13 @@ scale = Vector2(0.5, 0.5)
 [node name="knife" parent="." instance=ExtResource("10_qsg3g")]
 position = Vector2(-894, -37)
 
+[node name="gloves" parent="." instance=ExtResource("13_g3hlq")]
+position = Vector2(52, -66)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("13_vrv86")]
+
 [connection signal="area_entered" from="mappieces/door1" to="mappieces/door1" method="_on_area_entered"]
 [connection signal="body_entered" from="mappieces/door1" to="mappieces/door1" method="_on_body_entered"]
 [connection signal="body_exited" from="mappieces/door1" to="mappieces/door1" method="_on_body_exited"]
@@ -265,4 +274,3 @@ position = Vector2(-894, -37)
 [connection signal="body_exited" from="mappieces/door2" to="mappieces/door1" method="_on_door_2_body_exited"]
 [connection signal="body_entered" from="mappieces/buildingoutsidewall" to="mappieces/buildingoutsidewall" method="_on_body_entered"]
 [connection signal="body_exited" from="mappieces/buildingoutsidewall" to="mappieces/buildingoutsidewall" method="_on_body_exited"]
-[connection signal="collected" from="knife" to="." method="_on_knife_collected"]
