@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dscomxe8hfpni"]
+[gd_scene load_steps=18 format=3 uid="uid://dscomxe8hfpni"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2"]
@@ -30,6 +30,12 @@ func _process(delta):
         zoome = not zoome
     global_position = lerp(global_position, player.global_position + Vector2(0,-90), delta*3)
 "
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dnxl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fowqb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otmip"]
 
 [node name="Game" type="Node2D"]
 
@@ -89,6 +95,7 @@ script = ExtResource("4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Go back"]
 scale = Vector2(8.08755, 14.5749)
+shape = SubResource("RectangleShape2D_5dnxl")
 
 [node name="gloves" parent="." instance=ExtResource("6")]
 position = Vector2(-378, -95)
@@ -106,6 +113,7 @@ scale = Vector2(9.34514, 5.54593)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorkArea1Knife/Area2D"]
 scale = Vector2(1, 0.932408)
+shape = SubResource("RectangleShape2D_fowqb")
 
 [node name="Sprite2D" type="Sprite2D" parent="WorkArea1Knife"]
 scale = Vector2(0.125055, 0.168196)
@@ -122,6 +130,7 @@ script = ExtResource("10")
 
 [node name="turn lights onc" type="CollisionShape2D" parent="turn lights on"]
 position = Vector2(-138.508, -12.1292)
+shape = SubResource("RectangleShape2D_otmip")
 
 [node name="light_right" type="PointLight2D" parent="."]
 position = Vector2(223.015, -181.254)
