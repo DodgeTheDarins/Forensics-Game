@@ -24,3 +24,5 @@ position = Vector2(555.06104, 331.9991)
 scale = Vector2(4.6, 3)
 energy = 10.0
 texture = ExtResource("3_hokoe")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
