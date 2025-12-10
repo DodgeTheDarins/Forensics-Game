@@ -26,6 +26,7 @@ func _physics_process(delta: float) -> void:
 		$players.flip_h = false
 	elif direction > 0:
 		$players.flip_h = true
-
+	if Input.is_action_just_pressed("gobackmainpls"):
+		get_tree().change_scene_to_file("res://mainmenu.tscn")
 	move_and_slide()
 	print(direction)

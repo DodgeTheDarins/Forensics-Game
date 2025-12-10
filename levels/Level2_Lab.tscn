@@ -20,7 +20,7 @@ size = Vector2(1045.5967, 44.982075)
 size = Vector2(1045.5156, 44.90625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7j1t"]
-size = Vector2(608.8434, 56.460182)
+size = Vector2(53.65776, 292.7514)
 
 [sub_resource type="GDScript" id="15"]
 script/source = "extends Camera2D
@@ -89,7 +89,7 @@ region_enabled = true
 region_rect = Rect2(0, 232, 216, 640)
 
 [node name="labwall1c" type="CollisionShape2D" parent="mappiecesbutlab/labwall1"]
-position = Vector2(294.4217, 18.230091)
+position = Vector2(571.0008, -99.94602)
 shape = SubResource("RectangleShape2D_i7j1t")
 
 [node name="big_wall" type="Sprite2D" parent="."]
