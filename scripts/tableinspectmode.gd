@@ -21,7 +21,7 @@ var textures := {
 	"knife": preload("res://ui/knife_clean.png"),
 	"fibre": preload("res://levels/bkvyrdhcar.png"),
 	"gloves": preload("res://levels/download.jpg"),
-	"blood": preload("res://levels/blood_splatter-removebg-preview.png"),
+	"blood": preload("res://ui/vialofblood.png"),
 	"knife_tampered":preload("uid://dtbdugx1y42ov"),
 	"knife_bloody": preload("uid://bawuxx2rqlaa8")}
 	
@@ -35,25 +35,35 @@ func _ready():
 
 func _refresh(_junk = null):
 	var inv = get_node("/root/inventory")
-	var items: Array = inv.get_items()
+	var items = inv.get_items()
 
-	# Clear all spots
+	# Hide all spots
 	for s in spots:
-		s.texture = null
 		s.visible = false
 
 	var index := 0
-
 	for internal_name in items:
 		if index >= spots.size():
 			break
 
-		var visual_name = internal_name
-		if internal_name in aliases:
-			visual_name = aliases[internal_name]
+		var spot: Node2D = spots[index]
+		spot.visible = true
 
-		if visual_name in textures:
-			spots[index].texture = textures[visual_name]
-			spots[index].visible = true
+		# Pick texture based on internal name
+		var sprite = spot.get_node("Sprite2D")
+
+		match internal_name:
+			"knife_clean":
+				sprite.texture = preload("res://ui/knife_clean.png")
+				sprite.scale = Vector2.ONE
+			"knife_tampered":
+				sprite.texture = preload("res://ui/knife_tampered.png")
+				sprite.scale = Vector2.ONE
+			"knife_bloody":
+				sprite.texture = preload("res://ui/knife_bloody.png")
+				sprite.scale = Vector2.ONE
+			"blood":
+				sprite.texture = preload("res://ui/vialofblood.png")
+				sprite.scale = Vector2(0.35, 0.35)  # <<< SCALE DOWN BLOOD
 
 		index += 1
