@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dprw8pd5jxyu5"]
+
+[ext_resource type="Script" uid="uid://jpixckewyxp" path="res://button.gd" id="1_cmhrf"]
+[ext_resource type="Script" uid="uid://cek3c5e8njinn" path="res://options_button.gd" id="2_d2nv2"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PLAY_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 458.26337
+offset_top = 437.76593
+offset_right = 681.4861
+offset_bottom = 524.82733
+text = "Play"
+script = ExtResource("1_cmhrf")
+
+[node name="OPTIONS_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 502.1863
+offset_top = 544.64526
+offset_right = 633.1707
+offset_bottom = 593.6401
+text = "options"
+script = ExtResource("2_d2nv2")

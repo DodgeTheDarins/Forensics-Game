@@ -313,6 +313,7 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(-876.85657, -94.75397)
 collision_layer = 8
 collision_mask = 8
+mass = 11.183
 script = ExtResource("14_26cpd")
 
 [node name="knifespriterigid" type="Sprite2D" parent="kniferigid"]
