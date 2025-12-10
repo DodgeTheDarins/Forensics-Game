@@ -35,35 +35,25 @@ func _ready():
 
 func _refresh(_junk = null):
 	var inv = get_node("/root/inventory")
-	var items = inv.get_items()
+	var items: Array = inv.get_items()
 
-	# Hide all spots
+	# Clear all spots
 	for s in spots:
+		s.texture = null
 		s.visible = false
 
 	var index := 0
+
 	for internal_name in items:
 		if index >= spots.size():
 			break
 
-		var spot: Node2D = spots[index]
-		spot.visible = true
+		var visual_name = internal_name
+		if internal_name in aliases:
+			visual_name = aliases[internal_name]
 
-		# Pick texture based on internal name
-		var sprite = spot.get_node("Sprite2D")
-
-		match internal_name:
-			"knife_clean":
-				sprite.texture = preload("res://ui/knife_clean.png")
-				sprite.scale = Vector2.ONE
-			"knife_tampered":
-				sprite.texture = preload("res://ui/knife_tampered.png")
-				sprite.scale = Vector2.ONE
-			"knife_bloody":
-				sprite.texture = preload("res://ui/knife_bloody.png")
-				sprite.scale = Vector2.ONE
-			"blood":
-				sprite.texture = preload("res://ui/vialofblood.png")
-				sprite.scale = Vector2(0.35, 0.35)  # <<< SCALE DOWN BLOOD
+		if visual_name in textures:
+			spots[index].texture = textures[visual_name]
+			spots[index].visible = true
 
 		index += 1
