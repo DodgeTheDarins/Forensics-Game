@@ -31,26 +31,59 @@ texture = ExtResource("3_hokoe")
 [node name="Spot1" type="Sprite2D" parent="."]
 position = Vector2(200, 140)
 
+[node name="Button" type="Button" parent="Spot1"]
+offset_right = 8.0
+offset_bottom = 8.0
+action_mode = 0
+
 [node name="Spot2" type="Sprite2D" parent="."]
 position = Vector2(430, 140)
+
+[node name="Button" type="Button" parent="Spot2"]
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="Spot3" type="Sprite2D" parent="."]
 position = Vector2(660, 140)
 
+[node name="Button" type="Button" parent="Spot3"]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [node name="Spot4" type="Sprite2D" parent="."]
 position = Vector2(890, 140)
+
+[node name="Button" type="Button" parent="Spot4"]
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="Spot5" type="Sprite2D" parent="."]
 position = Vector2(200, 400)
 
+[node name="Button" type="Button" parent="Spot5"]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [node name="Spot6" type="Sprite2D" parent="."]
 position = Vector2(430, 400)
+
+[node name="Button" type="Button" parent="Spot6"]
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="Spot7" type="Sprite2D" parent="."]
 position = Vector2(660, 400)
 
+[node name="Button" type="Button" parent="Spot7"]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [node name="Spot8" type="Sprite2D" parent="."]
 position = Vector2(890, 400)
+
+[node name="Button" type="Button" parent="Spot8"]
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="Button" type="Button" parent="."]
 offset_left = 22.000008
