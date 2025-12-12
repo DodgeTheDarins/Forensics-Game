@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwhrsnm6b73be"]
+
+[ext_resource type="Script" uid="uid://cs2fe27gfgsgp" path="res://scripts/control.gd" id="1_e8j6d"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e8j6d")
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+position = Vector2(577, 324)
