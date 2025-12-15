@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://djfn7qxpknt24"]
+
+[ext_resource type="Texture2D" uid="uid://ddkyrya5ut3kr" path="res://levels/_93945ba8-17c6-4e8b-becd-ea19e77a95a7.jpg" id="1_1iwux"]
+[ext_resource type="Texture2D" uid="uid://d0cnngk5yv6ad" path="res://levels/_4633b9ce-11ed-44ea-bd74-d47bfe199bea.jpg" id="2_1ymgx"]
+[ext_resource type="Texture2D" uid="uid://daja2qhvpp5p3" path="res://levels/chariar.png" id="3_h16n8"]
+[ext_resource type="Texture2D" uid="uid://cgt32ibbd1cwu" path="res://levels/lightingtexturdoesntgothroughwalls.png" id="4_5jyod"]
+
+[node name="lie detector test" type="Node2D"]
+
+[node name="93945Ba817c64e8bBecdEa19e77a95a7" type="Sprite2D" parent="."]
+self_modulate = Color(0.14767182, 0.14767179, 0.14767179, 1)
+texture_repeat = 2
+position = Vector2(576.2315, 284.61682)
+scale = Vector2(0.38083047, 0.28457966)
+texture = ExtResource("1_1iwux")
+region_enabled = true
+region_rect = Rect2(0, -976, 3024, 2000)
+
+[node name="4633b9Ce11Ed44EaBd74D47Bfe199Bea" type="Sprite2D" parent="."]
+self_modulate = Color(0.27022192, 0.27022192, 0.2702219, 1)
+texture_repeat = 2
+position = Vector2(576.1355, 608.584)
+scale = Vector2(0.55375123, 0.81933415)
+texture = ExtResource("2_1ymgx")
+region_enabled = true
+region_rect = Rect2(0, 928, 2080, 96)
+
+[node name="Chariar" type="Sprite2D" parent="."]
+self_modulate = Color(0.18359044, 0.18359044, 0.18359044, 1)
+position = Vector2(670.29285, 623.3418)
+scale = Vector2(1.8190738, 1.9204034)
+texture = ExtResource("3_h16n8")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(547.7627, -0.11441803)
+rotation = 0.017453292
+scale = Vector2(4.239134, 9.404245)
+energy = 9.66
+texture = ExtResource("4_5jyod")
+offset = Vector2(-0.17687988, 9.770957)
