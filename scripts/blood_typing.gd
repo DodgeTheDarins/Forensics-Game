@@ -1,11 +1,10 @@
 extends Node2D
-
-@onready var image_display := $Sprite2D
 var in_range := false
 
 func _process(_delta):
-	if in_range and Input.is_action_just_pressed("pickup"):
-		get_tree().change_scene_to_file("res://tableinspectmode.tscn")
+	if in_range and Input.is_action_just_pressed("pickup") and inventory.has_item("blood"):
+		print("loading")
+		get_tree().change_scene_to_file("res://levels/blood_typing.tscn")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

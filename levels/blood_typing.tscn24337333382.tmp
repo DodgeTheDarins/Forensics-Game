@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://csknt8sog75ot"]
+
+[ext_resource type="Script" uid="uid://cyb572o24bsyp" path="res://scripts/blood.gd" id="1_e0mt6"]
+[ext_resource type="Script" uid="uid://c5tqi3n8khf34" path="res://scripts/sample.gd" id="2_fytlh"]
+[ext_resource type="Texture2D" uid="uid://cm4gqnxmdx65g" path="res://ui/vialofblood.png" id="2_pw0hm"]
+[ext_resource type="Script" uid="uid://dlvbbeniian66" path="res://scripts/serum.gd" id="3_4qvlo"]
+[ext_resource type="Texture2D" uid="uid://h4q61ur2c8di" path="res://icon.svg" id="4_1opai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0mt6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fytlh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qvlo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw0hm"]
+
+[node name="Node2D" type="Node2D"]
+top_level = true
+script = ExtResource("1_e0mt6")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HintText" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="FinishButton" type="Button" parent="UI"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(559, 268)
+scale = Vector2(3.1428683, 11.1808605)
+script = ExtResource("2_fytlh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_e0mt6")
+
+[node name="BloodSample" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.31818068, 0.08943856)
+texture = ExtResource("2_pw0hm")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(140, 482)
+scale = Vector2(6.3905873, 5.9186482)
+script = ExtResource("3_4qvlo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("RectangleShape2D_fytlh")
+
+[node name="AntiA" type="Sprite2D" parent="Area2D2"]
+scale = Vector2(0.15648015, 0.1689575)
+texture = ExtResource("4_1opai")
+
+[node name="Area2D4" type="Area2D" parent="."]
+position = Vector2(547, 493)
+scale = Vector2(6.292467, 6.552145)
+script = ExtResource("3_4qvlo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+shape = SubResource("RectangleShape2D_4qvlo")
+
+[node name="AntiB" type="Sprite2D" parent="Area2D4"]
+scale = Vector2(0.15892018, 0.15262178)
+texture = ExtResource("4_1opai")
+
+[node name="Area2D3" type="Area2D" parent="."]
+position = Vector2(936, 482)
+scale = Vector2(6.2523813, 6.411112)
+script = ExtResource("3_4qvlo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+shape = SubResource("RectangleShape2D_pw0hm")
+
+[node name="AntiRh" type="Sprite2D" parent="Area2D3"]
+scale = Vector2(0.15993907, 0.15597919)
+texture = ExtResource("4_1opai")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(1.5794071, 1.593186)
+zoom = Vector2(0.5, 0.5)
