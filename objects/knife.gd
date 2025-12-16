@@ -2,7 +2,7 @@ extends Node2D
 
 signal collected
 
-var in_evidence := false
+var in_evidence :bool = (false)
 
 @export var item_name := "knife"
 

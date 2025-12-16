@@ -3,7 +3,7 @@ extends Area2D
 @onready var player := get_tree().get_nodes_in_group("player")[0]
 @onready var light1: PointLight2D = $"../PointLight2D"
 @onready var light2: PointLight2D = $"../PointLight2D2"
-var opacitygo
+var opacitygo = bool(false)
 
 func _ready() -> void:
 	visible = true

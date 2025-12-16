@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://djfn7qxpknt24"]
+[gd_scene load_steps=15 format=3 uid="uid://djfn7qxpknt24"]
 
 [ext_resource type="Texture2D" uid="uid://ddkyrya5ut3kr" path="res://levels/_93945ba8-17c6-4e8b-becd-ea19e77a95a7.jpg" id="1_1iwux"]
 [ext_resource type="Script" uid="uid://c7dkna4tolrm3" path="res://lie_detector_test.gd" id="1_v5nae"]
@@ -11,6 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://bvwbdkvunt1po" path="res://levels/chef3.png" id="8_fytmi"]
 [ext_resource type="Texture2D" uid="uid://bwti8xcwt8gbb" path="res://levels/thekid.png" id="9_3v81o"]
 [ext_resource type="Texture2D" uid="uid://df0jyhurpeqcc" path="res://speechbubble.png" id="11_cn5hh"]
+[ext_resource type="Texture2D" uid="uid://d3ndvnba433yg" path="res://polygraph background.png" id="12_fytmi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fytmi"]
+size = Vector2(15.374069, 164.74557)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fytmi"]
 
 [node name="lie detector test" type="Node2D"]
 script = ExtResource("1_v5nae")
@@ -158,3 +164,23 @@ offset_right = 770.9609
 offset_bottom = 200.87004
 theme_override_font_sizes/font_size = 12
 autowrap_mode = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(837.34906, 506.64417)
+shape = SubResource("RectangleShape2D_fytmi")
+
+[node name="PolygraphBackground" type="Sprite2D" parent="Area2D"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(932.90594, 510.51764)
+texture = ExtResource("12_fytmi")
+
+[node name="followpoint" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="followpoint"]
+z_index = 4096
+position = Vector2(1074.4602, 575.2409)
+scale = Vector2(-8.881284, -7.638877)
+texture = SubResource("PlaceholderTexture2D_fytmi")

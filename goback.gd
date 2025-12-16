@@ -1,5 +1,5 @@
 extends Button
-var go_back = false #Variable allows to have button or esc
+var go_back = bool(false) #Variable allows to have button or esc
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("gobackmainpls") or button_pressed:

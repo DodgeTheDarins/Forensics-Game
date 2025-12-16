@@ -4,8 +4,8 @@ extends Area2D
 @onready var sprite: Sprite2D = $door1s
 @onready var sprite2: Sprite2D = $"../door2/door2s"
 
-var work
-var work2
+var work = bool(false)
+var work2 = bool(false)
 func _ready() -> void:
 	pass
 func _process(delta: float):

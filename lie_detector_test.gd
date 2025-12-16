@@ -1,4 +1,5 @@
 extends Node2D
+@onready var followpoint: Node2D = $followpoint
 @onready var suspect_1b: Button = $"suspectselection/suspect1 (chef1)"
 @onready var suspect_2b: Button = $"suspectselection/suspect2 (chef2)"
 @onready var suspect_3b: Button = $"suspectselection/suspect3 (chef3)"
@@ -21,6 +22,9 @@ extends Node2D
 @onready var thekid: Sprite2D = $Thekid
 @onready var waitress: Sprite2D = null   #change these to the new stuff
 @onready var clerk: Sprite2D = null 
+
+const polyline = preload("res://polygraphlines.tscn")
+var polylineline = polyline.instantiate()
 
 var suspect1 = bool(false)
 var suspect2 = bool(false)
@@ -45,6 +49,8 @@ var done66 = bool(false)
 var talking = bool(false)
 var questioning = bool(false)
 var questionstage = int(0)
+var lyingfactor = float(-3.0)
+var timer = float(0.0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	talking = false
@@ -52,6 +58,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	
+	
+	buttonstuff()
+	miscstuff(delta)
+	questionstuff()
+	theanswers()
+	polygraph(delta)
+func buttonstuff() -> void:
 	if done1: 
 		suspect_1b.disabled = true
 	if done2:
@@ -135,6 +150,7 @@ func _process(delta: float) -> void:
 		suspect5 = false
 		suspect6 = false
 		questionstage = 1
+func questionstuff() -> void:
 	if (suspect1 == true or suspect2 == true or suspect3 == true or suspect4 == true or suspect5 == true or suspect6 == true) and not talking:
 		questioning = true
 	else:
@@ -190,44 +206,44 @@ func _process(delta: float) -> void:
 			question_3.text = "we know it's you, just confess."
 	elif questioning and suspect4:
 		if questionstage == 1:
-			question_1.text = ""
-			question_2.text = ""
-			question_3.text = ""
+			question_1.text = "where were you at the time of the murder?"
+			question_2.text = "do you have an alibi?"
+			question_3.text = "what colour are apples."
 		if questionstage == 2:
-			question_1.text = ""
-			question_2.text = ""
-			question_3.text = ""
+			question_1.text = "how do you know the owner?"
+			question_2.text = "have you had any arguments at the workplace lately?"
+			question_3.text = "how many parents do you have?"
 		if questionstage == 3:
-			question_1.text = ""
-			question_2.text = ""
-			question_3.text = ""
+			question_1.text = "what's 9 + 10?"
+			question_2.text = "do you have any idea who the murderer could be?"
+			question_3.text = "we know it's you, just confess."
 	elif questioning and suspect5:
 		if questionstage == 1:
-			question_1.text = ""
-			question_2.text = ""
-			question_3.text = ""
+			question_1.text = "where were you at the time of the murder?"
+			question_2.text = "do you have an alibi?"
+			question_3.text = "what colour are apples."
 		if questionstage == 2:
-			question_1.text = ""
-			question_2.text = ""
-			question_3.text = ""
+			question_1.text = "how do you know the owner?"
+			question_2.text = "have you had any arguments at the workplace lately?"
+			question_3.text = "how many parents do you have?"
 		if questionstage == 3:
-			question_1.text = ""
-			question_2.text = ""
-			question_3.text = ""
+			question_1.text = "what's 9 + 10?"
+			question_2.text = "do you have any idea who the murderer could be?"
+			question_3.text = "we know it's you, just confess."
 	elif questioning and suspect6:
 		if questionstage == 1:
-			question_1.text = ""
-			question_2.text = ""
-			question_3.text = ""
+			question_1.text = "where were you at the time of the murder?"
+			question_2.text = "do you have an alibi?"
+			question_3.text = "what colour are apples."
 		if questionstage == 2:
-			question_1.text = ""
-			question_2.text = ""
-			question_3.text = ""
+			question_1.text = "how do you know the owner?"
+			question_2.text = "have you had any arguments at the workplace lately?"
+			question_3.text = "how many parents do you have?"
 		if questionstage == 3:
-			question_1.text = ""
-			question_2.text = ""
-			question_3.text = ""
-	
+			question_1.text = "what's 9 + 10?"
+			question_2.text = "do you have any idea who the murderer could be?"
+			question_3.text = "we know it's you, just confess."
+func miscstuff(delta) -> void:
 	if talking and Input.is_action_just_pressed("next"):
 		if label.visible_ratio == 1.0:
 			talking = false
@@ -240,223 +256,295 @@ func _process(delta: float) -> void:
 			chef_1.visible = false
 			chef_2.visible = true
 			done11 = true
-		if done2 and not done22:
+		elif done2 and not done22:
 			suspect2 = false
 			suspect3 = true
 			chef_2.visible = false
 			chef_3.visible = true
-			done11 = true
-		if done3 and not done33:
+			done22 = true
+		elif done3 and not done33:
 			suspect3 = false
 			suspect4 = true
 			chef_3.visible = false
 			thekid.visible = true
 			done33 = true
+		elif done4 and not done44:
+			suspect4 = false
+			suspect5 = true
+			thekid.visible = false
+			#waitress.visible = true
+			done44 = true
+		elif done5 and not done55:
+			suspect5 = false
+			suspect6 = true
+			#waitress.visible = false
+			#clerk.visible = true
+			done55 = true
+		elif done6 and not done66:
+			suspect3 = false
+			suspect4 = true
+			#clerk.visible = false
+			#get_tree().scene_changed #idk change tree cause you're done
+			done55 = true
 	if questionstage == 4 and talking == false:
 		talking = true
 		label.text = "If that's all I'll be seeing myself out."
 		questionstage = 0
 		if suspect1:
 			done1 = true
-		if suspect2:
+		elif suspect2:
 			done2 = true
-		if suspect3:
+		elif suspect3:
 			done3 = true
-		if suspect4:
-			pass
-		if suspect6:
-			pass
+		elif suspect4:
+			done4 = true
+		elif suspect5:
+			done5 = true
+		elif suspect6:
+			done6 = true
 	if talking:
 		speechbubble.visible = true
 		label.visible_ratio += (delta/label.get_total_character_count()) * 16
 	else:
 		speechbubble.visible = false
 		label.visible_ratio = 0.0
+	
+	
+func theanswers() -> void:
 	if questioning:
 		if questionstage == 1:
+##############################suspect 1 stage 1 questions#########################################################################################################
 			if suspect1:
 				if question_1.button_pressed == true:
 					talking = true #where were you
 					label.text = "I Didn't go to work that day. I took a sick day and spent it at my grandmas, you can ask her yourself."
+					lyingfactor = -5.0
 				elif question_2.button_pressed == true:
 					talking = true #alibi?
 					label.text = "yes, I was at my grandmothers house, I was home sick, you can ask her if you let me contact her."
+					lyingfactor = -4.0
 				elif question_3.button_pressed == true:
 					talking = true #what where you doing
 					label.text = "uh... red."
+					lyingfactor = -5.0
+#############################suspect 2 stage 1 questions############################################################################################################
 			elif suspect2:
 				if question_1.button_pressed == true:
 					talking = true
 					label.text = "oh I was at the movies, left right after work to catch up with some old friends."
+					lyingfactor = -7.0
 				elif question_2.button_pressed == true:
 					talking = true
 					label.text = "yeah, I went to the movies after work, left (the clerk) and (owner) to lock up."
+					lyingfactor = -8.0
 				elif question_3.button_pressed == true:
 					talking = true
 					label.text = "at toothirty..."
+					lyingfactor = -6.0
+###############################suspect 3 stage 1 questions##########################################################################################################
 			elif suspect3:
 				if question_1.button_pressed == true:
 					talking = true
 					label.text = "I went home early that day, (owner) said I was just in the way"
+					lyingfactor = -7.0
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
+#################################suspect 4 stage 1 questions########################################################################################################
 			elif suspect4:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
+##################################suspect 5 stage 1 questions#######################################################################################################
 			elif suspect5:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
+####################################suspect 6 stage 1 questions#####################################################################################################
 			elif suspect6:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
+###########################stage######################################################################################
+#############################2############################################################################################################
 		elif questionstage == 2:
+###################################suspect 1 stage 2 questions######################################################################################################
 			if suspect1:
 				if question_1.button_pressed == true:
 					talking = true #how do you know the owner
 					label.text = "I've worked at this restaurant for many years, was one of (owner's name)'s first cooks, he was a good man but I didn't see him much outside of work."
+					lyingfactor = -3.0
 				elif question_2.button_pressed == true:
 					talking = true #have you had any arguments at the workplace lately
 					label.text = "Not any major ones, but there is occasional bickering from the new recruits."
+					lyingfactor = -5.0
 				elif question_3.button_pressed == true:
 					talking = true # have you hever hurt someone
 					label.text = "well I'm pretty sure the answers 2, but I haven't checked recently."
+					lyingfactor = -6.0
+###################################suspect 2 stage 2 questions######################################################################################################
 			elif suspect2:
 				if question_1.button_pressed == true:
 					talking = true # how do you know the owner
 					label.text = "I met him when I applied for this job outta highschool, he's nice I guess but I think he pushes us too hard."
+					lyingfactor = -7.0
 				elif question_2.button_pressed == true:
 					talking = true
 					label.text = "no."
+					lyingfactor = -11.0
 				elif question_3.button_pressed == true:
 					talking = true
 					label.text = "I think everybody hurts someone from time to time."
+					lyingfactor = -7.0
+###################################suspect 3 stage 2 questions######################################################################################################
 			elif suspect3:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
+###################################suspect 4 stage 2 questions######################################################################################################
 			elif suspect4:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
+###################################suspect 5 stage 2 questions######################################################################################################
 			elif suspect5:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
+###################################suspect 6 stage 2 questions######################################################################################################
 			elif suspect6:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
+###################################stage######################################################################################################
+#####################################3######################################################################################################
 		elif questionstage == 3:
+###################################suspect 1 stage 2 questions######################################################################################################
 			if suspect1:
 				if question_1.button_pressed == true:
 					talking = true #contact with workers on murder day
 					label.text = "21, obviously"
+					lyingfactor = -3.0
 				elif question_2.button_pressed == true:
 					talking = true #who do you think it is
 					label.text = "nobody in particular, but (ownername) has had a history of encouraging his workers to work harder."
+					lyingfactor = -6.5
 				elif question_3.button_pressed == true:
 					talking = true #we know it's you
 					label.text = "I doubt that, I think I would have remembered something as serious as murder."
+					lyingfactor = -9.0
+###################################suspect 2 stage 3 questions######################################################################################################
 			elif suspect2:
 				if question_1.button_pressed == true:
 					talking = true # where cut
 					label.text = "I guess I sliced so many vegtables it was hard to tell finger from food."
+					lyingfactor = -5.0
 				elif question_2.button_pressed == true:
 					talking = true # who do you think it was
 					label.text = "I don't mean to point fingers but It was kinda suspicious how (clerk) was last at the restaurant alone with (owner)."
+					lyingfactor = -7.0
 				elif question_3.button_pressed == true:
 					talking = true # we know it's you
 					label.text = "yeah right, I'm not falling for that."
+					lyingfactor = -11.0
+###################################suspect 3 stage 3 questions######################################################################################################
 			elif suspect3:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
+###################################suspect 4 stage 3 questions######################################################################################################
 			elif suspect4:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
+###################################suspect 5 stage 3 questions######################################################################################################
 			elif suspect5:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
+###################################suspect 6 stage 3 questions######################################################################################################
 			elif suspect6:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = ""
+					label.text = "________________________________"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = ""
-		
+					label.text = "________________________________"
+func polygraph(delta) -> void:
+	#followpoint.global_position = Vector2(1075.0, 425.0) # to 580ish
+	followpoint.global_position.y =  move_toward(followpoint.global_position.y, lyingfactor * 10, delta * 16)
+	lyingfactor += randf_range(-1.0, 1.0) * delta
+	lyingfactor = clampf(lyingfactor, -13.0, 0.0)
+	polylineline.global_position = followpoint.global_position
+	followpoint.add_child(polylineline)
+	
+	
 		
 		
 		
