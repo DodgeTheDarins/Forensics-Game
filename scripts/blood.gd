@@ -11,7 +11,7 @@ const TOTAL_REACTIONS := 3
 func _ready():
 
 	# UI
-	hint_text.text = "Drag the blood sample into each serum. Once complete, look at any reactions and press finish" 
+	hint_text.text = "Drag the blood sample into each serum. Once complete, look at any reactions and press finish"
 	finish_button.disabled = true
 	finish_button.hide()
 	finish_button.pressed.connect(_on_finish_button_pressed)
@@ -26,10 +26,12 @@ func _ready():
 func register_reaction():
 	reactions_done += 1
 	print(reactions_done)
+	hint_text.text = "Tested serums: %d / 3" % reactions_done
 	if reactions_done >= TOTAL_REACTIONS:
 		hint_text.text = "All reactions observed!"
 		finish_button.disabled = false
 		finish_button.show()
+
 
 func _on_finish_button_pressed() -> void:
 	print("Blood typing test finished!")
@@ -54,4 +56,3 @@ func _on_area_2d_3_registered() -> void:
 
 func _on_area_2d_2_registered() -> void:
 	register_reaction()
-	print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
