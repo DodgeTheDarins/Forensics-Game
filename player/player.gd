@@ -9,7 +9,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if cargocan and Input.is_action_just_pressed("pickup"):
-		get_tree().change_scene_to_file("res://levels/Level2_Lab.tscn")
+		get_tree().change_scene_to_file("res://lie_detector_test.tscn")
 	if not inventory.has_item("clipboard"):
 		inventory.add_item("clipboard")
 	else:
