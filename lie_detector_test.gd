@@ -15,6 +15,7 @@ extends Node2D
 
 @onready var speechbubble: Sprite2D = $Speechbubble
 @onready var label: Label = $Label
+@onready var followpoint_sprite2d: Sprite2D = $followpoint/Sprite2D
 
 
 @onready var chef_1: Sprite2D = $Chef1
@@ -26,6 +27,7 @@ extends Node2D
 
 const polyline = preload("res://polygraphlines.tscn")
 var polylineline = polyline.instantiate()
+
 
 var suspect1 = bool(false)
 var suspect2 = bool(false)
@@ -52,6 +54,8 @@ var questioning = bool(false)
 var questionstage = int(0)
 var lyingfactor = float(-3.0)
 var timer = float(0.0)
+var general = bool(false)
+var spawncount = int(0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	talking = false
@@ -545,13 +549,21 @@ func theanswers() -> void:
 					talking = true
 					label.text = "________________________________"
 func polygraph(delta) -> void:
-	#followpoint.global_position = Vector2(1075.0, 425.0) # to 580ish
+	
 	followpoint.global_position.y =  move_toward(followpoint.global_position.y, lyingfactor * 10, delta * 16)
 	lyingfactor += randf_range(-1.0, 1.0) * delta
 	lyingfactor = clampf(lyingfactor, -13.0, 0.0)
-	polylineline.global_position = followpoint.global_position
-	followpoint.add_child(polylineline)
 	
+		
+	spawnline(delta)
+		
+	
+func spawnline(delta) -> void:
+	spawncount += 1
+	
+	polylineline.name = "polylineline" + str(spawncount)
+	polylineline.global_position = followpoint_sprite2d.global_position
+	add_child(polylineline)
 	
 		
 		

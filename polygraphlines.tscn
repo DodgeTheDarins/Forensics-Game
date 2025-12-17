@@ -19,7 +19,7 @@ collision_mask = 128
 [node name="Sprite2D" type="Sprite2D" parent="line"]
 z_index = 4096
 position = Vector2(0.47265625, -0.39453125)
-scale = Vector2(1.9453125, 1.7890625)
+scale = Vector2(1.4, 1.4)
 texture = SubResource("PlaceholderTexture2D_phx5k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="line"]

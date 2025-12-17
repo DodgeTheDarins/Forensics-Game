@@ -9,9 +9,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	area_2d.global_position.x -= delta * 50
-
+	global_position.x -= delta * 50
+	
+	area_2d.visible = true
 
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	visible = false
+	
+	area_2d.visible = false
 	queue_free()
