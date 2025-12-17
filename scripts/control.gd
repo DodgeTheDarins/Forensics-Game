@@ -21,6 +21,10 @@ func _ready():
 	if internal_name == "clipboard":
 		get_tree().change_scene_to_file("res://levels/clipboardview.tscn")
 		return
+	# SPECIAL CASE: open clipboard viewer
+	if internal_name == "blood":
+		get_tree().change_scene_to_file("res://levels/blood_typing.tscn")
+		return
 
 	_show_item(internal_name)
 
