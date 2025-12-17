@@ -45,7 +45,7 @@ var done5 = bool(false)
 var done55 = bool(false)
 var done6 = bool(false)
 var done66 = bool(false)
-
+var has_knife = bool(false)
 var talking = bool(false)
 var questioning = bool(false)
 var questionstage = int(0)
@@ -167,9 +167,14 @@ func questionstuff() -> void:
 	
 	if questioning and suspect1:
 		if questionstage == 1:
-			question_1.text = "where were you at the time of the murder?"
-			question_2.text = "do you have an alibi?"
-			question_3.text = "what colour are apples."
+			if not has_knife:
+				question_1.text = "where were you at the time of the murder?"
+				question_2.text = "do you have an alibi?"
+				question_3.text = "what colour are apples."
+			else:
+				question_1.text = "where were you at the time of the murder?"
+				question_2.text = "do you have an alibi?"
+				question_3.text = "what colour are apples."
 		if questionstage == 2:
 			question_1.text = "how do you know the owner?"
 			question_2.text = "have you had any arguments at the workplace lately?"
@@ -308,8 +313,6 @@ func miscstuff(delta) -> void:
 	else:
 		speechbubble.visible = false
 		label.visible_ratio = 0.0
-	
-	
 func theanswers() -> void:
 	if questioning:
 		if questionstage == 1:
