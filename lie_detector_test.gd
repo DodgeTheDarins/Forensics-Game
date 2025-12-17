@@ -8,6 +8,7 @@ extends Node2D
 @onready var suspect_6b: Button = $"suspectselection/suspect6 (the clerk)"
 
 
+
 @onready var question_1: Button = $Node2D/question1
 @onready var question_2: Button = $Node2D/question2
 @onready var question_3: Button = $Node2D/question3
@@ -45,7 +46,7 @@ var done5 = bool(false)
 var done55 = bool(false)
 var done6 = bool(false)
 var done66 = bool(false)
-var has_knife = bool(false)
+var has_knife = int()
 var talking = bool(false)
 var questioning = bool(false)
 var questionstage = int(0)
@@ -55,12 +56,16 @@ var timer = float(0.0)
 func _ready() -> void:
 	talking = false
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if inventory.has_item("knife_tampered"):
+		has_knife = 1
+	if inventory.has_item("knife_bloody"):
+		has_knife = 2
+	if inventory.has_item("knife_clean"):
+		has_knife = 3
 	
-	
-	
+		
 	buttonstuff()
 	miscstuff(delta)
 	questionstuff()
