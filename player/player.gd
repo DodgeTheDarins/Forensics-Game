@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if cargocan and Input.is_action_just_pressed("pickup"):
 		get_tree().change_scene_to_file("res://lie_detector_test.tscn")
 	if not inventory.has_item("clipboard"):
@@ -17,17 +17,17 @@ func _process(delta: float) -> void:
 
 
 
-func _on_door_1_body_entered(body: Node2D) -> void:
+func _on_door_1_body_entered(_body: Node2D) -> void:
 	dooropen = true
 
 
-func _on_door_1_body_exited(body: Node2D) -> void:
+func _on_door_1_body_exited(_body: Node2D) -> void:
 	dooropen = false
 
 
-func _on_car_go_body_entered(body: Node2D) -> void:
+func _on_car_go_body_entered(_body: Node2D) -> void:
 	cargocan = true # Replace with function body.
 
 
-func _on_car_go_body_exited(body: Node2D) -> void:
+func _on_car_go_body_exited(_body: Node2D) -> void:
 	cargocan = false # Replace with function body.

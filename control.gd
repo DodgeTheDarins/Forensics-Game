@@ -28,7 +28,7 @@ func _input(event: InputEvent) -> void:
 		visible = !visible
 
 
-func _refresh(new_item := "") -> void:
+func _refresh(_new_item := "") -> void:
 	# Clear old buttons
 	for c in list.get_children():
 		c.queue_free()

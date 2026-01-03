@@ -1,14 +1,14 @@
 extends Area2D
 
 @onready var player := get_tree().get_nodes_in_group("player")[0]
-@onready var sprite: Sprite2D = $door1s
+@onready var sprite: Sprite2D = $"../door1/door1s"
 @onready var sprite2: Sprite2D = $"../door2/door2s"
 
 var work = bool(false)
 var work2 = bool(false)
 func _ready() -> void:
 	pass
-func _process(delta: float):
+func _process(_delta: float):
 	if work:
 		if player.velocity.x < 0.0:
 			sprite.scale.y = 0.2

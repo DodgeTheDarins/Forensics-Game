@@ -52,7 +52,6 @@ script/source = "extends Camera2D
 
 @onready var player := get_tree().get_nodes_in_group(\"player\")[0]
 var zoome = false
-@onready var knifespriterigid: Sprite2D = $\"../RigidBody2D/knifespriterigid\"
 
 func _ready() -> void:
 	zoom = Vector2(0.5, 0.5)
@@ -342,7 +341,6 @@ scale = Vector2(2.2322016, 1.8792192)
 energy = 3.49
 texture = ExtResource("9_ow1bj")
 
-[connection signal="area_entered" from="mappieces/door1" to="mappieces/door1" method="_on_area_entered"]
 [connection signal="body_entered" from="mappieces/door1" to="mappieces/door1" method="_on_body_entered"]
 [connection signal="body_exited" from="mappieces/door1" to="mappieces/door1" method="_on_body_exited"]
 [connection signal="body_entered" from="mappieces/door2" to="mappieces/door1" method="_on_door_2_body_entered"]
@@ -351,4 +349,3 @@ texture = ExtResource("9_ow1bj")
 [connection signal="body_exited" from="mappieces/buildingoutsidewall" to="mappieces/buildingoutsidewall" method="_on_body_exited"]
 [connection signal="body_entered" from="mappieces/car go?" to="Player" method="_on_car_go_body_entered"]
 [connection signal="body_exited" from="mappieces/car go?" to="Player" method="_on_car_go_body_exited"]
-[connection signal="collected" from="kniferigid/knife" to="kniferigid" method="_on_knife_collected"]

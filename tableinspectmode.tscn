@@ -92,3 +92,11 @@ offset_right = 121.29999
 offset_bottom = 58.600006
 text = "Go Back"
 script = ExtResource("5_wvak2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 159.99997
+offset_top = 1.9999998
+offset_right = 667.0
+offset_bottom = 25.0
+scale = Vector2(1.9451293, 3.021506)
+text = "Click on any item to view it a bit closer or interact with it."
