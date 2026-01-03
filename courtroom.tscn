@@ -1,3 +1,103 @@
-[gd_scene format=3 uid="uid://dh7rcbxabei0a"]
+[gd_scene load_steps=3 format=3 uid="uid://dh7rcbxabei0a"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://c1y4x6kf2im5n" path="res://judge_stand.png" id="1_cwvjp"]
+[ext_resource type="Script" uid="uid://c6colyq60kgj6" path="res://courtroom.gd" id="1_jqga1"]
+
+[node name="courtroom" type="Node2D"]
+script = ExtResource("1_jqga1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.737193, 0.7371929, 0.7371929, 1)
+position = Vector2(610.0597, 601.8888)
+scale = Vector2(1.1272571, 1.2272954)
+texture = ExtResource("1_cwvjp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -41
+position = Vector2(616.0389, 335.66876)
+scale = Vector2(4.2196193, 11.015904)
+texture = ExtResource("1_cwvjp")
+region_enabled = true
+region_rect = Rect2(144, 240, 368, 80)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 125.53711
+offset_top = 25.107422
+offset_right = 1235.7415
+offset_bottom = 110.38049
+theme_override_font_sizes/font_size = 60
+text = "Who do you want to prosecute?"
+
+[node name="suspect 1" type="Button" parent="."]
+offset_left = 253.96136
+offset_top = 142.2564
+offset_right = 349.82745
+offset_bottom = 201.28923
+text = "Suspect 1"
+
+[node name="suspect 2" type="Button" parent="."]
+offset_left = 358.3487
+offset_top = 142.77731
+offset_right = 456.13956
+offset_bottom = 201.69594
+text = "Suspect 2"
+
+[node name="suspect 3" type="Button" parent="."]
+offset_left = 464.62216
+offset_top = 143.47699
+offset_right = 563.00354
+offset_bottom = 202.64937
+text = "Suspect 3"
+
+[node name="suspect 4" type="Button" parent="."]
+offset_left = 570.0595
+offset_top = 143.81728
+offset_right = 668.32166
+offset_bottom = 202.48376
+text = "Suspect 4"
+
+[node name="suspect 5" type="Button" parent="."]
+offset_left = 676.23193
+offset_top = 144.96674
+offset_right = 774.92444
+offset_bottom = 203.34433
+text = "Suspect 5"
+
+[node name="suspect 6" type="Button" parent="."]
+offset_left = 781.98083
+offset_top = 145.97383
+offset_right = 880.729
+offset_bottom = 203.87401
+text = "Suspect 6"
+
+[node name="evidence" type="Node2D" parent="."]
+
+[node name="blood" type="Button" parent="evidence"]
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+disabled = true
+
+[node name="knife" type="Button" parent="evidence"]
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+disabled = true
+
+[node name="fiber" type="Button" parent="evidence"]
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+disabled = true
+
+[node name="alibi" type="Button" parent="evidence"]
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+disabled = true
+
+[node name="dishes" type="Button" parent="evidence"]
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+disabled = true
