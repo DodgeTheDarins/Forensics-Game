@@ -164,12 +164,26 @@ func buttonstuff() -> void:
 		thekid.visible = false
 		#waitress.visible = true
 		#clerk.visible = false
-		suspect1 = true
+		suspect1 = false
+		suspect2 = false
+		suspect3 = false
+		suspect4 = false
+		suspect5 = true
+		suspect6 = false
+		questionstage = 1
+	if suspect_6b.button_pressed == true:
+		chef_1.visible = false
+		chef_2.visible = false
+		chef_3.visible = false
+		thekid.visible = false
+		#waitress.visible = false
+		#clerk.visible = true
+		suspect1 = false
 		suspect2 = false
 		suspect3 = false
 		suspect4 = false
 		suspect5 = false
-		suspect6 = false
+		suspect6 = true
 		questionstage = 1
 func questionstuff() -> void:
 	if (suspect1 == true or suspect2 == true or suspect3 == true or suspect4 == true or suspect5 == true or suspect6 == true) and not talking:
