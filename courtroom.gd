@@ -11,16 +11,18 @@ extends Node2D
 @onready var alibi: Button = $evidence/alibi
 @onready var dishes: Button = $evidence/dishes
 @onready var blood: Button = $evidence/blood
+@onready var label_2: Label = $Label2
 
-
+var winpercentage = float(50.0)
 var suspect1select = bool(false)
 var suspect2select = bool(false)
 var suspect3select = bool(false)
 var suspect4select = bool(false)
 var suspect5select = bool(false)
 var suspect6select = bool(false)
-var suspectselected
+var suspectselected = str("")
 var evidence_time = bool(false)
+var talking = bool(false)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -28,6 +30,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if talking:
+		label.visible_ratio += (delta/label.get_total_character_count()) * 16
+		if Input.is_action_just_pressed("next"):
+			if label.visible_ratio == 1.0:
+				talking = false
+				label.text = "What evidence will you use to 
+		prove " + suspectselected + " is guilty?"
+			else:
+				label.visible_ratio = 1.0
+	
+	
 	buttons()
 
 
@@ -99,6 +112,166 @@ func buttons() ->void:
 		if inventory.has_item("blood"):
 			blood.visible = true
 			blood.disabled = false
+		label_2.text = "Juror favor::
+			" + str(winpercentage)  + "%"
+	if evidence_time:
+		if suspect1select:
+			if knife.button_pressed:
+				winpercentage += 20.0
+				knife.disabled = true
+				talking = true
+				label.text = "Fingerprints found on knife match the suspect!"
+			if fiber.button_pressed:
+				winpercentage += 20.0
+				fiber.disabled = true
+				talking = true
+				label.text = "Fibers match the clothing Suspect was wearing!"
+			if dishes.button_pressed:
+				winpercentage -= 10.0
+				dishes.disabled = true
+				talking = true
+				label.text = "What does this have to do with the case?!"
+			if alibi.button_pressed:
+				winpercentage -= 20.0
+				alibi.disabled = true
+				talking = true
+				label.text = "The alibi was confirmed to be true!"
+			if blood.button_pressed:
+				winpercentage += -10.0
+				blood.disabled = true
+				talking = true
+				label.text = "the blood type doesn't match!"
+		elif suspect2select:
+			if knife.button_pressed:
+				winpercentage += 20.0
+				knife.disabled = true
+				talking = true
+				label.text = "Fingerprints found on knife match the suspect!"
+			if fiber.button_pressed:
+				winpercentage += 20.0
+				fiber.disabled = true
+				talking = true
+				label.text = "Fibers match the clothing Suspect was wearing!"
+			if dishes.button_pressed:
+				winpercentage -= 10.0
+				dishes.disabled = true
+				talking = true
+				label.text = "What does this have to do with the case?!"
+			if alibi.button_pressed:
+				winpercentage += 40.0
+				alibi.disabled = true
+				talking = true
+				label.text = "The alibi was confirmed to be false!"
+			if blood.button_pressed:
+				winpercentage += 20.0
+				blood.disabled = true
+				talking = true
+				label.text = "the blood type matches!"
+		elif suspect3select:
+			if knife.button_pressed:
+				winpercentage += 20.0
+				knife.disabled = true
+				talking = true
+				label.text = "Fingerprints found on knife match the suspect!"
+			if fiber.button_pressed:
+				winpercentage += 20.0
+				fiber.disabled = true
+				talking = true
+				label.text = "Fibers match the clothing Suspect was wearing!"
+			if dishes.button_pressed:
+				winpercentage -= 10.0
+				dishes.disabled = true
+				talking = true
+				label.text = "What does this have to do with the case?!"
+			if alibi.button_pressed:
+				winpercentage -= 20.0
+				alibi.disabled = true
+				talking = true
+				label.text = "The alibi was confirmed to be true!"
+			if blood.button_pressed:
+				winpercentage += -10.0
+				blood.disabled = true
+				talking = true
+				label.text = "the blood type doesn't match!"
+		elif suspect4select:
+			if knife.button_pressed:
+				winpercentage += 20.0
+				knife.disabled = true
+				talking = true
+				label.text = "Fingerprints found on knife match the suspect!"
+			if fiber.button_pressed:
+				winpercentage -= 10.0
+				fiber.disabled = true
+				talking = true
+				label.text = "Fibers do not match the clothing Suspect was wearing!"
+			if dishes.button_pressed:
+				winpercentage -= 10.0
+				dishes.disabled = true
+				talking = true
+				label.text = "What does this have to do with the case?!"
+			if alibi.button_pressed:
+				winpercentage -= 20.0
+				alibi.disabled = true
+				talking = true
+				label.text = "The alibi was confirmed to be true!"
+			if blood.button_pressed:
+				winpercentage += 20.0
+				blood.disabled = true
+				talking = true
+				label.text = "the blood type matches!"
+		elif suspect5select:
+			if knife.button_pressed:
+				winpercentage -= 10.0
+				knife.disabled = true
+				talking = true
+				label.text = "Fingerprints found on knife match the suspect! except they are several weeks old."
+			if fiber.button_pressed:
+				winpercentage -= 10.0
+				fiber.disabled = true
+				talking = true
+				label.text = "Fibers do not match the clothing Suspect was wearing!"
+			if dishes.button_pressed:
+				winpercentage -= 10.0
+				dishes.disabled = true
+				talking = true
+				label.text = "What does this have to do with the case?!"
+			if alibi.button_pressed:
+				winpercentage -= 20.0
+				alibi.disabled = true
+				talking = true
+				label.text = "The alibi was confirmed to be true!"
+			if blood.button_pressed:
+				winpercentage += 20.0
+				blood.disabled = true
+				talking = true
+				label.text = "the blood type matches!"
+		elif suspect6select:
+			if knife.button_pressed:
+				winpercentage += -10.0
+				knife.disabled = true
+				talking = true
+				label.text = "Fingerprints found on knife do not match the suspect!"
+			if fiber.button_pressed:
+				winpercentage += 20.0
+				fiber.disabled = true
+				talking = true
+				label.text = "Fibers match the clothing Suspect was wearing!"
+			if dishes.button_pressed:
+				winpercentage -= 10.0
+				dishes.disabled = true
+				talking = true
+				label.text = "What does this have to do with the case?!"
+			if alibi.button_pressed:
+				winpercentage += 20.0
+				alibi.disabled = true
+				talking = true
+				label.text = "There is no way to confirm or deny the alibi!"
+			if blood.button_pressed:
+				winpercentage += -10.0
+				blood.disabled = true
+				talking = true
+				label.text = "the blood type doesn't match!"
+			
 		
 	
 		
