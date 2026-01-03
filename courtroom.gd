@@ -12,8 +12,11 @@ extends Node2D
 @onready var dishes: Button = $evidence/dishes
 @onready var blood: Button = $evidence/blood
 @onready var label_2: Label = $Label2
+@onready var finish: Button = $finish
+var win = bool(false)
+var lose = bool(false)
 var evidencestart = bool(false)
-var winpercentage = float(20.0)
+var winpercentage = float(0.0)
 var suspect1select = bool(false)
 var suspect2select = bool(false)
 var suspect3select = bool(false)
@@ -30,7 +33,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(winpercentage)
+	if finish.button_pressed:
+		if randf_range(0.0, 100.0) <= winpercentage:
+			if suspect2select:
+				talking = true
+				label.text = "You won! the murderer was proven guilty!"
+				label.visible_ratio = 0.0
+			else:
+				talking = true
+				label.text = "you won the court case! but sent an innocent citizen to jail..."
+				label.visible_ratio = 0.0
+		else:
+			talking = true
+			label.text = "you lost the court case and the murderer walks free."
+			label.visible_ratio = 0.0
+		finish.visible = false
+		finish.disabled = true
+			
 	if talking:
 		label.add_theme_font_size_override("font_size", 35)
 		label.visible_ratio += (delta/label.get_total_character_count()) * 16
@@ -43,7 +62,8 @@ func _process(delta: float) -> void:
 			else:
 				label.visible_ratio = 1.0
 	
-	
+	label_2.text = "Juror favor::
+	" + str(winpercentage)  + "%"
 	
 	buttons()
 
@@ -97,7 +117,8 @@ func buttons() ->void:
 		suspect_6.disabled = true
 		evidence_time = true
 	if evidence_time == true and not talking and not evidencestart:
-		
+		finish.visible = true
+		finish.disabled = false
 		label.text = "What evidence will you use to 
 		prove " + suspectselected + " is guilty?"
 		label.add_theme_font_size_override("font_size", 50)
@@ -117,8 +138,7 @@ func buttons() ->void:
 		if inventory.has_item("blood"):
 			blood.visible = true
 			blood.disabled = false
-		label_2.text = "Juror favor::
-			" + str(winpercentage)  + "%"
+		
 		evidencestart = true
 	if evidence_time:
 		if suspect1select:
@@ -186,7 +206,7 @@ func buttons() ->void:
 				label.text = "What does this have to do with the case?!"
 				label.visible_ratio = 0.0
 			if alibi.button_pressed:
-				winpercentage += 20.0
+				winpercentage += 40.0
 				alibi.disabled = true
 				talking = true
 				label.text = "The alibi was confirmed to be false!"
