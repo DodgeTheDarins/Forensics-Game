@@ -9,21 +9,15 @@ var aliases := {
 	"knife_clean": "knife",
 	"knife_tampered": "knife",
 	"knife_bloody": "knife",
-	"gloves": "gloves",
-	"blood": "blood",
-	"fibre": "fibre",
-	"clipboard": "clipboard"
+	"blood": "blood"
 }
 
 var textures := {
 	"knife": preload("res://ui/knife_clean.png"),
-	"fibre": preload("res://levels/bkvyrdhcar.png"),
-	"gloves": preload("res://levels/download.jpg"),
 	"blood": preload("res://ui/vialofblood.png"),
 	"knife_clean": preload("uid://dtbdugx1y42ov"),
 	"knife_tampered": preload("uid://dtbdugx1y42ov"),
 	"knife_bloody": preload("uid://bawuxx2rqlaa8"),
-	"clipboard": preload("res://ui/maybemainmenuscreenplaceholder.png")
 }
 
 

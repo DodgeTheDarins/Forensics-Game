@@ -1,11 +1,18 @@
 extends Area2D
 
 signal picked_up
+var novial
 
 func _ready():
 	print("Vial ready")
 
-func _input_event(viewport, event, shape_idx):
+func _process(_delta: float) -> void:
+	var novial = inventory.count_item("vial")
+	if novial >= 4:
+		queue_free()
+		
+
+func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		print("Vial picked up")
 		emit_signal("picked_up")

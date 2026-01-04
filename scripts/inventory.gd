@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 		inventory.add_item("Suspect 4 alibi")
 		inventory.add_item("Suspect 5 alibi")
 		inventory.add_item("Suspect 6 alibi")
+		inventory.add_item("dishes")
 
 # ------------------------------------
 # Register UI
