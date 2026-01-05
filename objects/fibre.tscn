@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bce12spgiqhhy"]
 
 [ext_resource type="Script" uid="uid://chbvk02qqtiq5" path="res://objects/fibre.gd" id="1_me1f6"]
-[ext_resource type="Texture2D" uid="uid://b01fi8eyfm20b" path="res://levels/bkvyrdhcar.png" id="2_me1f6"]
+[ext_resource type="Texture2D" uid="uid://bgp1ytd2tmehb" path="res://levels/fiberwall.png" id="2_me1f6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2b5e"]
 size = Vector2(5.361452, 20)
@@ -15,7 +15,8 @@ texture = ExtResource("2_me1f6")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(28.51231, 7.438587)
+position = Vector2(203, -14)
+scale = Vector2(192.1248, 30.4597)
 shape = SubResource("RectangleShape2D_r2b5e")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

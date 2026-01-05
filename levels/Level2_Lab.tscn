@@ -1,11 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://dscomxe8hfpni"]
+[gd_scene load_steps=29 format=3 uid="uid://dscomxe8hfpni"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2"]
 [ext_resource type="Texture2D" uid="uid://dda1eu66ephmm" path="res://levels/_420c81de-8eb5-42f2-9245-6d3ce6e110e1.jpg" id="3"]
 [ext_resource type="Texture2D" uid="uid://ck05cmo431yqw" path="res://doorsprite.png" id="3_5o2pl"]
 [ext_resource type="Script" uid="uid://dt4ffnrifx06y" path="res://levels/door1.gd" id="3_60t8u"]
-[ext_resource type="Script" uid="uid://xwmces1878g6" path="res://levels/go_back.gd" id="4"]
+[ext_resource type="Script" path="res://levels/go_back.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="5"]
 [ext_resource type="Script" uid="uid://u536eatcehys" path="res://levels/door2.gd" id="5_tp7qs"]
 [ext_resource type="Script" uid="uid://btr651eyjm5p5" path="res://scripts/work_area_1_knife.gd" id="8"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cw3netd6s1inh" path="res://scripts/microscopeinitial.gd" id="13_i7j1t"]
 [ext_resource type="Texture2D" uid="uid://bifich2fhc5g3" path="res://levels/microscope.png" id="14_bl4b1"]
 [ext_resource type="Script" uid="uid://wsqdq4dad3c5" path="res://levels/shelf.gd" id="15_bl4b1"]
+[ext_resource type="Texture2D" uid="uid://dn6cdpovh03b3" path="res://levels/sleflh.png" id="18_tp7qs"]
 
 [sub_resource type="RectangleShape2D" id="12"]
 size = Vector2(1045.5967, 44.982075)
@@ -103,16 +104,19 @@ region_rect = Rect2(0, 232, 216, 640)
 position = Vector2(571.0008, -99.94602)
 shape = SubResource("RectangleShape2D_i7j1t")
 
-[node name="Area2D" type="Area2D" parent="mappiecesbutlab/labwall1"]
+[node name="courtdoor" type="Area2D" parent="mappiecesbutlab/labwall1" groups=["courtdoor"]]
+collision_layer = 64
+collision_mask = 64
 script = ExtResource("3_60t8u")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mappiecesbutlab/labwall1/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mappiecesbutlab/labwall1/courtdoor"]
 position = Vector2(-564.99994, -101.00001)
 scale = Vector2(6.5533023, 11.679432)
 shape = SubResource("RectangleShape2D_8cojw")
 
-[node name="Doorsprite" type="Sprite2D" parent="mappiecesbutlab/labwall1/Area2D"]
+[node name="Doorsprite" type="Sprite2D" parent="mappiecesbutlab/labwall1/courtdoor"]
 modulate = Color(0.74138474, 0.7413847, 0.74138457, 1)
+z_index = -1
 position = Vector2(-568.0608, -81.90117)
 scale = Vector2(0.4, 0.3968038)
 texture = ExtResource("3_5o2pl")
@@ -128,6 +132,7 @@ shape = SubResource("RectangleShape2D_ibhnc")
 
 [node name="Doorsprite2" type="Sprite2D" parent="mappiecesbutlab/labwall1/Area2D2"]
 modulate = Color(0.74138474, 0.7413847, 0.74138457, 1)
+z_index = -1
 position = Vector2(454.3142, -81.90117)
 scale = Vector2(0.42845058, 0.3968038)
 texture = ExtResource("3_5o2pl")
@@ -238,12 +243,17 @@ script = ExtResource("15_bl4b1")
 [node name="Area2D" type="Area2D" parent="Shelf"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf/Area2D"]
+position = Vector2(11.000001, 6.000001)
+scale = Vector2(3.0233736, 6.8434305)
 shape = SubResource("RectangleShape2D_5o2pl")
 
 [node name="Sprite2D" type="Sprite2D" parent="Shelf"]
+position = Vector2(-1.999999, -11.999996)
+scale = Vector2(0.26806113, 0.35389525)
+texture = ExtResource("18_tp7qs")
 
-[connection signal="body_entered" from="mappiecesbutlab/labwall1/Area2D" to="mappiecesbutlab/labwall1/Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="mappiecesbutlab/labwall1/Area2D" to="mappiecesbutlab/labwall1/Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="mappiecesbutlab/labwall1/courtdoor" to="mappiecesbutlab/labwall1/courtdoor" method="_on_body_entered"]
+[connection signal="body_exited" from="mappiecesbutlab/labwall1/courtdoor" to="mappiecesbutlab/labwall1/courtdoor" method="_on_body_exited"]
 [connection signal="body_entered" from="mappiecesbutlab/labwall1/Area2D2" to="mappiecesbutlab/labwall1/Area2D2" method="_on_body_entered"]
 [connection signal="body_exited" from="mappiecesbutlab/labwall1/Area2D2" to="mappiecesbutlab/labwall1/Area2D2" method="_on_body_exited"]
 [connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]
