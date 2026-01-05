@@ -28,6 +28,7 @@ version_control/autoload_on_startup=true
 [global_group]
 
 player="add player here"
+courtdoor="idk how else im gonna do this"
 
 [input]
 
